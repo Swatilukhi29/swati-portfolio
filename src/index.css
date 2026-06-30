@@ -1,0 +1,174 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-size: 15px;
+  }
+  /* Scale the whole UI up on larger screens (all rem-based sizes follow).
+     Keeps things readable and premium instead of tiny on big monitors. */
+  @media (min-width: 1280px) { html { font-size: 16px; } }
+  @media (min-width: 1536px) { html { font-size: 17px; } }
+  @media (min-width: 1800px) { html { font-size: 18px; } }
+
+  body {
+    @apply bg-canvas text-ink font-body antialiased;
+    transition: background-color 0.4s ease, color 0.4s ease;
+  }
+  .dark body { @apply bg-canvas-d text-ink-d; }
+
+  ::selection { @apply bg-brand/20 text-ink; }
+  .dark ::selection { @apply bg-brand/30 text-ink-d; }
+
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #d3dbe8; border-radius: 9999px; }
+  ::-webkit-scrollbar-thumb:hover { background: #b9c4d6; }
+  .dark ::-webkit-scrollbar-thumb { background: #2a3550; }
+  .dark ::-webkit-scrollbar-thumb:hover { background: #3a4870; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+}
+
+@layer components {
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(100deg, #3b6ef6 0%, #7c5cff 55%, #0fb5ba 100%);
+  }
+
+  /* Glassmorphism - light */
+  .glass {
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    box-shadow: 0 1px 2px rgba(11,18,32,0.04), 0 8px 24px rgba(11,18,32,0.06);
+  }
+  .dark .glass {
+    background: rgba(18, 24, 41, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 30px rgba(0,0,0,0.4);
+  }
+
+  /* Solid card */
+  .card {
+    @apply bg-surface border border-line;
+    box-shadow: 0 1px 2px rgba(11,18,32,0.04), 0 8px 24px rgba(11,18,32,0.06);
+  }
+  .dark .card {
+    background-color: #121829;
+    border-color: #222c45;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.3), 0 10px 30px rgba(0,0,0,0.35);
+  }
+
+  /* Wider responsive container */
+  .container-x {
+    @apply mx-auto w-full max-w-[1500px] px-4 sm:px-6 md:px-8 lg:px-10 xl:px-16 2xl:px-20;
+  }
+
+  .dot-bg {
+    background-image: radial-gradient(rgba(59, 110, 246, 0.10) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+  .dark .dot-bg {
+    background-image: radial-gradient(rgba(124, 92, 255, 0.14) 1px, transparent 1px);
+  }
+
+  .blob { @apply pointer-events-none absolute rounded-full blur-3xl; }
+
+  .hover-lift { @apply transition duration-300 ease-out; }
+  .hover-lift:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 2px 4px rgba(11,18,32,0.05), 0 18px 40px rgba(11,18,32,0.10);
+  }
+  .dark .hover-lift:hover {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.4), 0 22px 48px rgba(0,0,0,0.5);
+  }
+
+  /* ---- Global animated background ---------------------------------------- */
+  .page-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .page-bg__grid {
+    position: absolute;
+    inset: -50%;
+    background-image:
+      linear-gradient(rgba(59,110,246,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59,110,246,0.05) 1px, transparent 1px);
+    background-size: 48px 48px;
+    animation: drift 40s linear infinite alternate;
+  }
+  .dark .page-bg__grid {
+    background-image:
+      linear-gradient(rgba(124,92,255,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(124,92,255,0.06) 1px, transparent 1px);
+  }
+  .page-bg__glow {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(90px);
+    opacity: 0.35;
+    animation: pulseglow 10s ease-in-out infinite;
+  }
+  .page-bg__aurora {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(120px);
+    opacity: 0.5;
+    animation: aurora 28s ease-in-out infinite alternate;
+    will-change: transform;
+  }
+  .dark .page-bg__aurora { opacity: 0.4; }
+
+  .page-bg__particle {
+    position: absolute;
+    border-radius: 9999px;
+    background: rgba(59, 110, 246, 0.5);
+    box-shadow: 0 0 8px rgba(59, 110, 246, 0.45);
+    animation: floatparticle linear infinite;
+    will-change: transform, opacity;
+  }
+  .dark .page-bg__particle {
+    background: rgba(124, 92, 255, 0.55);
+    box-shadow: 0 0 10px rgba(124, 92, 255, 0.5);
+  }
+}
+
+@keyframes aurora {
+  0%   { transform: translate(0,0) scale(1); }
+  50%  { transform: translate(5%,4%) scale(1.12); }
+  100% { transform: translate(-4%,-3%) scale(1.06); }
+}
+@keyframes floatparticle {
+  0%   { transform: translateY(0) translateX(0); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translateY(-130px) translateX(18px); opacity: 0; }
+}
+
+/* Animated dashed data-flow lines for the hero laptop illustration */
+@keyframes dashflow {
+  to { stroke-dashoffset: -24; }
+}
+
+@keyframes heroFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @keyframes heroFloat { 0%, 100% { transform: none; } }
+}
