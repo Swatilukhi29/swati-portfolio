@@ -282,7 +282,7 @@ export const projects = [
     ],
     impact:
       "Gives buyers explainable, data-driven recommendations that balance safety, cost, and efficiency instead of price alone.",
-    githubLink: "https://github.com/Swatilukhi29/",
+    githubLink: "https://github.com/Swatilukhi29/AutoGuardML/",
     demoLink: "",
     dates: "Jan 2026 - May 2026",
   },
