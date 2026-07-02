@@ -1,7 +1,17 @@
 const GA_ID = import.meta.env.VITE_GOOGLE_ANALYTICS_ID;
 const CLARITY_ID = import.meta.env.VITE_CLARITY_PROJECT_ID;
+const GSC_VERIFICATION = import.meta.env.VITE_GOOGLE_SEARCH_CONSOLE_VERIFICATION;
 
 export function initGoogleAnalytics() {
+
+  // Google Search Console Verification
+  if (GSC_VERIFICATION) {
+    const meta = document.createElement("meta");
+    meta.name = "google-site-verification";
+    meta.content = GSC_VERIFICATION;
+    document.head.appendChild(meta);
+  }
+
      // Google Analytics
   if (!GA_ID) {
     console.warn("Google Analytics ID is missing");
