@@ -6,7 +6,6 @@ import { initGoogleAnalytics } from "./analytics.js";
 
 initGoogleAnalytics();
 
-
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <App />
