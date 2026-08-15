@@ -321,7 +321,7 @@ export const projects = [
     ],
     impact:
       "Enables investors to make informed decisions by identifying high-revenue markets and the factors that drive Airbnb profitability.",
-    githubLink: "https://github.com/Swatilukhi29/",
+    githubLink: "https://github.com/Swatilukhi29/investment-analytics",
     demoLink: "",
     dates: "Aug 2025 - Dec 2025",
   },
@@ -354,7 +354,7 @@ export const projects = [
     ],
     impact:
       "Replaced manual tracking with automated, real-time reporting that supports faster operational decisions.",
-    githubLink: "https://github.com/Swatilukhi29/",
+    githubLink: "https://github.com/Swatilukhi29?tab=repositories",
     demoLink: "",
     dates: "Jan 2025 - May 2025",
   },
@@ -392,7 +392,7 @@ export const projects = [
     ],
     impact:
       "Enables personalized marketing by revealing distinct customer segments and predicting who is likely to subscribe.",
-    githubLink: "https://github.com/Swatilukhi29/",
+    githubLink: "https://github.com/Swatilukhi29/customer-segmentation-analytics/",
     demoLink: "",
     dates: "2025",
   },
@@ -430,7 +430,7 @@ export const projects = [
     ],
     impact:
       "Demonstrates a rigorous, comparative approach to forecasting volatile financial time series.",
-    githubLink: "https://github.com/Swatilukhi29/",
+    githubLink: "https://github.com/Swatilukhi29/time-series-forecasting",
     demoLink: "",
     dates: "2025",
   },
@@ -468,7 +468,7 @@ export const projects = [
     ],
     impact:
       "Shows when lightweight classical models suffice and when transformers add value for text classification.",
-    githubLink: "https://github.com/Swatilukhi29/",
+    githubLink: "https://github.com/Swatilukhi29/sentiment-analysis",
     demoLink: "",
     dates: "2025",
   },
@@ -501,7 +501,7 @@ export const projects = [
     ],
     impact:
       "Provides a structured, reliable backend for parking operations and automated billing.",
-    githubLink: "https://github.com/Swatilukhi29/",
+    githubLink: "https://github.com/Swatilukhi29?tab=repositories",
     demoLink: "",
     dates: "2024",
   },
